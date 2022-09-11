@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router";
 
 function App() {
   return (
-    <div className="bg-red-300">
-      <h1>oi</h1>
-    </div>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 
