@@ -1,0 +1,7 @@
+query GetCatalog($limite: Int) {
+    catalogs(where: {active: true}, first: $limite) {
+    id
+    name
+    value
+  }
+}

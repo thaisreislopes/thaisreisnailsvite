@@ -120,7 +120,7 @@ export function Header() {
           <ul className="flex gap-2">
             {data?.menus.map((menu) => {
               return (
-                <li>
+                <li key={menu.id}>
                   <a
                     href={menu.link}
                     className="hover:text-gray-200 transition-all duration-300"

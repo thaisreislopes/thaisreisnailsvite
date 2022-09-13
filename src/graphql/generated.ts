@@ -661,6 +661,498 @@ export type BatchPayload = {
   count: Scalars['Long'];
 };
 
+export type Catalog = Node & {
+  __typename?: 'Catalog';
+  active: Scalars['Boolean'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  description?: Maybe<Scalars['String']>;
+  /** Get the document in other stages */
+  documentInStages: Array<Catalog>;
+  /** List of Catalog versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+  value: Scalars['Int'];
+};
+
+
+export type CatalogCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type CatalogDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type CatalogHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type CatalogPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type CatalogScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type CatalogUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type CatalogConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: CatalogWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type CatalogConnection = {
+  __typename?: 'CatalogConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<CatalogEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type CatalogCreateInput = {
+  active: Scalars['Boolean'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  value: Scalars['Int'];
+};
+
+export type CatalogCreateManyInlineInput = {
+  /** Connect multiple existing Catalog documents */
+  connect?: InputMaybe<Array<CatalogWhereUniqueInput>>;
+  /** Create and connect multiple existing Catalog documents */
+  create?: InputMaybe<Array<CatalogCreateInput>>;
+};
+
+export type CatalogCreateOneInlineInput = {
+  /** Connect one existing Catalog document */
+  connect?: InputMaybe<CatalogWhereUniqueInput>;
+  /** Create and connect one Catalog document */
+  create?: InputMaybe<CatalogCreateInput>;
+};
+
+/** An edge in a connection. */
+export type CatalogEdge = {
+  __typename?: 'CatalogEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Catalog;
+};
+
+/** Identifies documents */
+export type CatalogManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CatalogWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CatalogWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CatalogWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  active_not?: InputMaybe<Scalars['Boolean']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  value?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  value_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  value_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  value_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  value_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  value_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+};
+
+export enum CatalogOrderByInput {
+  ActiveAsc = 'active_ASC',
+  ActiveDesc = 'active_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  ValueAsc = 'value_ASC',
+  ValueDesc = 'value_DESC'
+}
+
+export type CatalogUpdateInput = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  description?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['Int']>;
+};
+
+export type CatalogUpdateManyInlineInput = {
+  /** Connect multiple existing Catalog documents */
+  connect?: InputMaybe<Array<CatalogConnectInput>>;
+  /** Create and connect multiple Catalog documents */
+  create?: InputMaybe<Array<CatalogCreateInput>>;
+  /** Delete multiple Catalog documents */
+  delete?: InputMaybe<Array<CatalogWhereUniqueInput>>;
+  /** Disconnect multiple Catalog documents */
+  disconnect?: InputMaybe<Array<CatalogWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Catalog documents */
+  set?: InputMaybe<Array<CatalogWhereUniqueInput>>;
+  /** Update multiple Catalog documents */
+  update?: InputMaybe<Array<CatalogUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Catalog documents */
+  upsert?: InputMaybe<Array<CatalogUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type CatalogUpdateManyInput = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  description?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['Int']>;
+};
+
+export type CatalogUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: CatalogUpdateManyInput;
+  /** Document search */
+  where: CatalogWhereInput;
+};
+
+export type CatalogUpdateOneInlineInput = {
+  /** Connect existing Catalog document */
+  connect?: InputMaybe<CatalogWhereUniqueInput>;
+  /** Create and connect one Catalog document */
+  create?: InputMaybe<CatalogCreateInput>;
+  /** Delete currently connected Catalog document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Catalog document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Catalog document */
+  update?: InputMaybe<CatalogUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Catalog document */
+  upsert?: InputMaybe<CatalogUpsertWithNestedWhereUniqueInput>;
+};
+
+export type CatalogUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: CatalogUpdateInput;
+  /** Unique document search */
+  where: CatalogWhereUniqueInput;
+};
+
+export type CatalogUpsertInput = {
+  /** Create document if it didn't exist */
+  create: CatalogCreateInput;
+  /** Update document if it exists */
+  update: CatalogUpdateInput;
+};
+
+export type CatalogUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: CatalogUpsertInput;
+  /** Unique document search */
+  where: CatalogWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type CatalogWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CatalogWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CatalogWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CatalogWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  active_not?: InputMaybe<Scalars['Boolean']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  value?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  value_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  value_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  value_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  value_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  value_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+};
+
+/** References Catalog record uniquely */
+export type CatalogWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 /** Representing a color value comprising of HEX, RGBA and css color values */
 export type Color = {
   __typename?: 'Color';
@@ -1353,6 +1845,8 @@ export type Mutation = {
    * @deprecated Asset mutations will be overhauled soon
    */
   createAsset?: Maybe<Asset>;
+  /** Create one catalog */
+  createCatalog?: Maybe<Catalog>;
   /** Create one menu */
   createMenu?: Maybe<Menu>;
   /** Create one scheduledRelease */
@@ -1361,6 +1855,8 @@ export type Mutation = {
   createSubscriber?: Maybe<Subscriber>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
+  /** Delete one catalog from _all_ existing stages. Returns deleted document. */
+  deleteCatalog?: Maybe<Catalog>;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -1368,6 +1864,13 @@ export type Mutation = {
   deleteManyAssets: BatchPayload;
   /** Delete many Asset documents, return deleted documents */
   deleteManyAssetsConnection: AssetConnection;
+  /**
+   * Delete many Catalog documents
+   * @deprecated Please use the new paginated many mutation (deleteManyCatalogsConnection)
+   */
+  deleteManyCatalogs: BatchPayload;
+  /** Delete many Catalog documents, return deleted documents */
+  deleteManyCatalogsConnection: CatalogConnection;
   /**
    * Delete many Menu documents
    * @deprecated Please use the new paginated many mutation (deleteManyMenusConnection)
@@ -1392,6 +1895,8 @@ export type Mutation = {
   deleteSubscriber?: Maybe<Subscriber>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
+  /** Publish one catalog */
+  publishCatalog?: Maybe<Catalog>;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -1399,6 +1904,13 @@ export type Mutation = {
   publishManyAssets: BatchPayload;
   /** Publish many Asset documents */
   publishManyAssetsConnection: AssetConnection;
+  /**
+   * Publish many Catalog documents
+   * @deprecated Please use the new paginated many mutation (publishManyCatalogsConnection)
+   */
+  publishManyCatalogs: BatchPayload;
+  /** Publish many Catalog documents */
+  publishManyCatalogsConnection: CatalogConnection;
   /**
    * Publish many Menu documents
    * @deprecated Please use the new paginated many mutation (publishManyMenusConnection)
@@ -1419,18 +1931,24 @@ export type Mutation = {
   publishSubscriber?: Maybe<Subscriber>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
+  /** Schedule to publish one catalog */
+  schedulePublishCatalog?: Maybe<Catalog>;
   /** Schedule to publish one menu */
   schedulePublishMenu?: Maybe<Menu>;
   /** Schedule to publish one subscriber */
   schedulePublishSubscriber?: Maybe<Subscriber>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
+  /** Unpublish one catalog from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishCatalog?: Maybe<Catalog>;
   /** Unpublish one menu from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishMenu?: Maybe<Menu>;
   /** Unpublish one subscriber from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishSubscriber?: Maybe<Subscriber>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
+  /** Unpublish one catalog from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishCatalog?: Maybe<Catalog>;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -1438,6 +1956,13 @@ export type Mutation = {
   unpublishManyAssets: BatchPayload;
   /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyAssetsConnection: AssetConnection;
+  /**
+   * Unpublish many Catalog documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyCatalogsConnection)
+   */
+  unpublishManyCatalogs: BatchPayload;
+  /** Find many Catalog documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyCatalogsConnection: CatalogConnection;
   /**
    * Unpublish many Menu documents
    * @deprecated Please use the new paginated many mutation (unpublishManyMenusConnection)
@@ -1458,6 +1983,8 @@ export type Mutation = {
   unpublishSubscriber?: Maybe<Subscriber>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
+  /** Update one catalog */
+  updateCatalog?: Maybe<Catalog>;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -1465,6 +1992,13 @@ export type Mutation = {
   updateManyAssets: BatchPayload;
   /** Update many Asset documents */
   updateManyAssetsConnection: AssetConnection;
+  /**
+   * Update many catalogs
+   * @deprecated Please use the new paginated many mutation (updateManyCatalogsConnection)
+   */
+  updateManyCatalogs: BatchPayload;
+  /** Update many Catalog documents */
+  updateManyCatalogsConnection: CatalogConnection;
   /**
    * Update many menus
    * @deprecated Please use the new paginated many mutation (updateManyMenusConnection)
@@ -1487,6 +2021,8 @@ export type Mutation = {
   updateSubscriber?: Maybe<Subscriber>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
+  /** Upsert one catalog */
+  upsertCatalog?: Maybe<Catalog>;
   /** Upsert one menu */
   upsertMenu?: Maybe<Menu>;
   /** Upsert one subscriber */
@@ -1496,6 +2032,11 @@ export type Mutation = {
 
 export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
+};
+
+
+export type MutationCreateCatalogArgs = {
+  data: CatalogCreateInput;
 };
 
 
@@ -1519,6 +2060,11 @@ export type MutationDeleteAssetArgs = {
 };
 
 
+export type MutationDeleteCatalogArgs = {
+  where: CatalogWhereUniqueInput;
+};
+
+
 export type MutationDeleteManyAssetsArgs = {
   where?: InputMaybe<AssetManyWhereInput>;
 };
@@ -1531,6 +2077,21 @@ export type MutationDeleteManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCatalogsArgs = {
+  where?: InputMaybe<CatalogManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCatalogsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CatalogManyWhereInput>;
 };
 
 
@@ -1593,6 +2154,12 @@ export type MutationPublishAssetArgs = {
 };
 
 
+export type MutationPublishCatalogArgs = {
+  to?: Array<Stage>;
+  where: CatalogWhereUniqueInput;
+};
+
+
 export type MutationPublishManyAssetsArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -1614,6 +2181,24 @@ export type MutationPublishManyAssetsConnectionArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<AssetManyWhereInput>;
   withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyCatalogsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<CatalogManyWhereInput>;
+};
+
+
+export type MutationPublishManyCatalogsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<CatalogManyWhereInput>;
 };
 
 
@@ -1676,6 +2261,14 @@ export type MutationSchedulePublishAssetArgs = {
 };
 
 
+export type MutationSchedulePublishCatalogArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: CatalogWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishMenuArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -1699,6 +2292,14 @@ export type MutationScheduleUnpublishAssetArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishCatalogArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: CatalogWhereUniqueInput;
 };
 
 
@@ -1726,6 +2327,12 @@ export type MutationUnpublishAssetArgs = {
 };
 
 
+export type MutationUnpublishCatalogArgs = {
+  from?: Array<Stage>;
+  where: CatalogWhereUniqueInput;
+};
+
+
 export type MutationUnpublishManyAssetsArgs = {
   from?: Array<Stage>;
   locales?: InputMaybe<Array<Locale>>;
@@ -1745,6 +2352,24 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
   stage?: InputMaybe<Stage>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCatalogsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<CatalogManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCatalogsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<CatalogManyWhereInput>;
 };
 
 
@@ -1802,6 +2427,12 @@ export type MutationUpdateAssetArgs = {
 };
 
 
+export type MutationUpdateCatalogArgs = {
+  data: CatalogUpdateInput;
+  where: CatalogWhereUniqueInput;
+};
+
+
 export type MutationUpdateManyAssetsArgs = {
   data: AssetUpdateManyInput;
   where?: InputMaybe<AssetManyWhereInput>;
@@ -1816,6 +2447,23 @@ export type MutationUpdateManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCatalogsArgs = {
+  data: CatalogUpdateManyInput;
+  where?: InputMaybe<CatalogManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCatalogsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: CatalogUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CatalogManyWhereInput>;
 };
 
 
@@ -1877,6 +2525,12 @@ export type MutationUpsertAssetArgs = {
 };
 
 
+export type MutationUpsertCatalogArgs = {
+  upsert: CatalogUpsertInput;
+  where: CatalogWhereUniqueInput;
+};
+
+
 export type MutationUpsertMenuArgs = {
   upsert: MenuUpsertInput;
   where: MenuWhereUniqueInput;
@@ -1928,6 +2582,14 @@ export type Query = {
   assets: Array<Asset>;
   /** Retrieve multiple assets using the Relay connection interface */
   assetsConnection: AssetConnection;
+  /** Retrieve a single catalog */
+  catalog?: Maybe<Catalog>;
+  /** Retrieve document version */
+  catalogVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple catalogs */
+  catalogs: Array<Catalog>;
+  /** Retrieve multiple catalogs using the Relay connection interface */
+  catalogsConnection: CatalogConnection;
   /** Retrieve a single menu */
   menu?: Maybe<Menu>;
   /** Retrieve document version */
@@ -2002,6 +2664,44 @@ export type QueryAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type QueryCatalogArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: CatalogWhereUniqueInput;
+};
+
+
+export type QueryCatalogVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryCatalogsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CatalogOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<CatalogWhereInput>;
+};
+
+
+export type QueryCatalogsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CatalogOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<CatalogWhereInput>;
 };
 
 
@@ -2293,7 +2993,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Menu | Subscriber;
+export type ScheduledOperationAffectedDocument = Asset | Catalog | Menu | Subscriber;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -4215,12 +4915,56 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type GetCatalogQueryVariables = Exact<{
+  limite?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type GetCatalogQuery = { __typename?: 'Query', catalogs: Array<{ __typename?: 'Catalog', id: string, name: string, value: number }> };
+
 export type GetMenusLinktreeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetMenusLinktreeQuery = { __typename?: 'Query', menus: Array<{ __typename?: 'Menu', id: string, name: string, link: string, icone?: string | null }> };
 
 
+export const GetCatalogDocument = gql`
+    query GetCatalog($limite: Int) {
+  catalogs(where: {active: true}, first: $limite) {
+    id
+    name
+    value
+  }
+}
+    `;
+
+/**
+ * __useGetCatalogQuery__
+ *
+ * To run a query within a React component, call `useGetCatalogQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCatalogQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCatalogQuery({
+ *   variables: {
+ *      limite: // value for 'limite'
+ *   },
+ * });
+ */
+export function useGetCatalogQuery(baseOptions?: Apollo.QueryHookOptions<GetCatalogQuery, GetCatalogQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCatalogQuery, GetCatalogQueryVariables>(GetCatalogDocument, options);
+      }
+export function useGetCatalogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCatalogQuery, GetCatalogQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCatalogQuery, GetCatalogQueryVariables>(GetCatalogDocument, options);
+        }
+export type GetCatalogQueryHookResult = ReturnType<typeof useGetCatalogQuery>;
+export type GetCatalogLazyQueryHookResult = ReturnType<typeof useGetCatalogLazyQuery>;
+export type GetCatalogQueryResult = Apollo.QueryResult<GetCatalogQuery, GetCatalogQueryVariables>;
 export const GetMenusLinktreeDocument = gql`
     query GetMenusLinktree {
   menus(where: {active: true, AND: {category: "linktree"}}) {
