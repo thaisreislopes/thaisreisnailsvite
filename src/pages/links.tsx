@@ -3,7 +3,7 @@ import { useGetMenusLinktreeQuery } from "../graphql/generated";
 
 export function Links() {
   const { data } = useGetMenusLinktreeQuery();
-  console.log(data);
+
   if (!data) {
     return (
       <div className="flex flex-1 justify-center items-center w-screen h-screen bg-rose-300">

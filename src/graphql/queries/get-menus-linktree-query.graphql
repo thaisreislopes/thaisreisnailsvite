@@ -3,5 +3,6 @@ query GetMenusLinktree {
     id
     name
     link
+    icone
   }
 }

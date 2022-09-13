@@ -1,13 +1,17 @@
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Newsletter } from "../components/Newsletter";
 import { Slide } from "../components/Slide";
 
 export function Home() {
   return (
-    <main>
+    <>
       <Header />
-      <Slide />
-      <Newsletter />
-    </main>
+      <main className="w-screen block pt-20">
+        <Slide />
+        <Newsletter />
+        <Footer />
+      </main>
+    </>
   );
 }

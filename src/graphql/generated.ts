@@ -814,6 +814,7 @@ export type Menu = Node & {
   documentInStages: Array<Menu>;
   /** List of Menu versions */
   history: Array<Version>;
+  icone?: Maybe<Scalars['String']>;
   /** The unique identifier */
   id: Scalars['ID'];
   link: Scalars['String'];
@@ -892,6 +893,7 @@ export type MenuCreateInput = {
   active: Scalars['Boolean'];
   category: Scalars['String'];
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  icone?: InputMaybe<Scalars['String']>;
   link: Scalars['String'];
   name: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -968,6 +970,25 @@ export type MenuManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  icone?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  icone_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  icone_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  icone_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  icone_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  icone_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  icone_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  icone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  icone_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  icone_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1069,6 +1090,8 @@ export enum MenuOrderByInput {
   CategoryDesc = 'category_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  IconeAsc = 'icone_ASC',
+  IconeDesc = 'icone_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   LinkAsc = 'link_ASC',
@@ -1084,6 +1107,7 @@ export enum MenuOrderByInput {
 export type MenuUpdateInput = {
   active?: InputMaybe<Scalars['Boolean']>;
   category?: InputMaybe<Scalars['String']>;
+  icone?: InputMaybe<Scalars['String']>;
   link?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
 };
@@ -1108,6 +1132,7 @@ export type MenuUpdateManyInlineInput = {
 export type MenuUpdateManyInput = {
   active?: InputMaybe<Scalars['Boolean']>;
   category?: InputMaybe<Scalars['String']>;
+  icone?: InputMaybe<Scalars['String']>;
   link?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
 };
@@ -1203,6 +1228,25 @@ export type MenuWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  icone?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  icone_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  icone_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  icone_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  icone_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  icone_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  icone_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  icone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  icone_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  icone_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -4174,7 +4218,7 @@ export enum _SystemDateTimeFieldVariation {
 export type GetMenusLinktreeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMenusLinktreeQuery = { __typename?: 'Query', menus: Array<{ __typename?: 'Menu', id: string, name: string, link: string }> };
+export type GetMenusLinktreeQuery = { __typename?: 'Query', menus: Array<{ __typename?: 'Menu', id: string, name: string, link: string, icone?: string | null }> };
 
 
 export const GetMenusLinktreeDocument = gql`
@@ -4183,6 +4227,7 @@ export const GetMenusLinktreeDocument = gql`
     id
     name
     link
+    icone
   }
 }
     `;

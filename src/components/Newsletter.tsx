@@ -2,12 +2,12 @@ import { PaperPlaneTilt } from "phosphor-react";
 
 export function Newsletter() {
   return (
-    <section className="flex flex-col w-full bg-rose-450 py-7">
-      <div className="md:w-[980px] mx-auto flex flex-col">
+    <section className="flex flex-col md:flex-row w-full bg-rose-450 py-9">
+      <div className="md:w-[980px] mx-auto flex flex-col ">
         <h2 className="text-2xl text-center pb-4 font-bold text-yellow-800">
           Newsletter
         </h2>
-        <div className="flex flex-col md:flex-row px-4 gap-4 w-full  justify-around">
+        <div className="flex flex-col md:flex-row px-4 gap-4 w-full justify-around items-center">
           <div className="max-w-sm text-yellow-800">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
             labore reprehenderit maiores. Dolore quidem vitae unde, voluptatem,
