@@ -16,7 +16,7 @@ export function Newsletter() {
           </div>
           <div className="flex items-center">
             <form action="" className="flex">
-              <div className="bg-white md:w-[250px] py-4 px-3">
+              <div className="bg-white-100 md:w-[250px] py-4 px-3">
                 <input
                   type="email"
                   name=""
@@ -25,7 +25,7 @@ export function Newsletter() {
                 />
               </div>
               <button className="bg-red-300 p-4">
-                <PaperPlaneTilt size={32} className="text-white" />
+                <PaperPlaneTilt size={32} className="text-white-100" />
               </button>
             </form>
           </div>

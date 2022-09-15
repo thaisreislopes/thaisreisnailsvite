@@ -13,12 +13,13 @@ export function Catalogo() {
         <h2 className="text-2xl text-center pb-4 font-bold text-yellow-800">
           Catálogo
         </h2>
-        <span className="text-sm text-center">
+        <p className="text-sm text-center">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda
           laborum quasi, sapiente iure mollitia architecto qui totam.
-        </span>
+        </p>
       </div>
-      <div className="flex justify-center p-4">
+      <div className="flex flex-col justify-center items-end p-4">
+          <a className="w-[100px] flex justify-center py-3 my-2 text-yellow-800 font-bold underline hover:no-underline underline-offset-4 transition-all duration-300" href="#">Ver todos</a>
         <ul className="grid grid-cols-3 md:grid-cols-6 gap-3">
           {data?.catalogs.map((catalogo) => {
             return (

@@ -5,8 +5,13 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: "Nunito, sans-serif",
+        mono: "Great Vibes, sans-serif"
       },
       colors: {
+        white: {
+          100: "#FFFFFF",
+          200: "#eff2f1"
+        },
         rose: {
           300: "#F7F0F2",
           400: "#D1C6C6",
