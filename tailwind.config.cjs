@@ -5,12 +5,16 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: "Nunito, sans-serif",
-        mono: "Great Vibes, sans-serif"
+        mono: "Great Vibes, sans-serif",
+      },
+      backgroundImage: {
+        "th-gradiente":
+          "linear-gradient(to left top, #ffffff, #f7f0f2, #eed9e1, #e4c3d3,#d7adc7, #c898bd,  #c898bd, #c898bd, #d7adc7, #e4c3d3, #eed9e1, #f7f0f2, #ffffff);",
       },
       colors: {
         white: {
           100: "#FFFFFF",
-          200: "#eff2f1"
+          200: "#eff2f1",
         },
         rose: {
           300: "#F7F0F2",

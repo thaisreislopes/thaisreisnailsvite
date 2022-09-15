@@ -19,7 +19,12 @@ export function Catalogo() {
         </p>
       </div>
       <div className="flex flex-col justify-center items-end p-4">
-          <a className="w-[100px] flex justify-center py-3 my-2 text-yellow-800 font-bold underline hover:no-underline underline-offset-4 transition-all duration-300" href="#">Ver todos</a>
+        <a
+          className="w-[100px] flex justify-center py-3 my-2 text-yellow-800 font-bold underline hover:no-underline underline-offset-4 transition-all duration-300"
+          href="#"
+        >
+          Ver todos
+        </a>
         <ul className="grid grid-cols-3 md:grid-cols-6 gap-3">
           {data?.catalogs.map((catalogo) => {
             return (
@@ -29,7 +34,12 @@ export function Catalogo() {
               >
                 <div className="text-center flex flex-col items-center">
                   <h3 className="text-sm">{catalogo.name}</h3>
-                  <strong className="text-sm">R$ {catalogo.value}</strong>
+                  <strong className="text-sm">
+                    {(catalogo.value / 100).toLocaleString("pt-br", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
+                  </strong>
                 </div>
               </li>
             );
