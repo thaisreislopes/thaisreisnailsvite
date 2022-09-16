@@ -2,6 +2,7 @@ import { Catalogo } from "../components/Catalogo";
 import { Equipe } from "../components/Equipe";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { Localizacao } from "../components/Localicao";
 import { Newsletter } from "../components/Newsletter";
 import { Slide } from "../components/Slide";
 
@@ -14,6 +15,7 @@ export function Home() {
         <Catalogo />
         <Equipe />
         <Newsletter />
+        <Localizacao />
         <Footer />
       </main>
     </>
